@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>
+    <%= title %>
+  </title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  .main-container {
+    padding-top: 70px;
+  }
+  </style>
+  <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
+  <script>
+  angular
+    .module('boilerplate', ['ui.bootstrap'])
+    .constant('STATIC_ROOT', '<%= STATIC_ROOT %>');
+  </script>
+  <script src="<%= STATIC_ROOT %>controllers/boilerplate.js"></script>
+  <script src="<%= STATIC_ROOT %>services/socketio.js"></script>
+  <script src="<%= STATIC_ROOT %>socket.io/socket.io.js"></script>
+</head>
+
+<body ng-app="boilerplate" ng-controller="mainController">
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Koa Boilerplate</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+          <li>
+            <a href="#">About</a>
+          </li>
+          <li>
+            <a href="#">Services</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+              <span class="glyphicon glyphicon-user"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href class="item" ng-click="">Account</a>
+                <a href class="item" ng-click="">Privacy</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+              <span class="glyphicon glyphicon-off"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href class="item" ng-click="">Logout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container main-container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1>Koa Boilerplate</h1>
+        <p class="lead">Kick off your project immediately!</p>
+        <ul class="list-unstyled">
+          <li>Bootstrap v3.3.4</li>
+          <li>Bootstrap UI v0.12.1</li>
+          <li>AngularJS v1.3.14</li>
+          <li>Socket.io v1.0 <em>{{ message }}</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

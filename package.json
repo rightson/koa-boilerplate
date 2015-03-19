@@ -1,0 +1,29 @@
+{
+  "name": "koa-boilerplate",
+  "version": "1.0.0",
+  "description": "Koa Boilerplate",
+  "main": "app.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rightson/koa-boilerplate.git"
+  },
+  "author": "Scott Chen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rightson/koa-boilerplate/issues"
+  },
+  "homepage": "https://github.com/rightson/koa-boilerplate",
+  "dependencies": {
+    "koa": "^0.18.1",
+    "koa-body": "^1.1.0",
+    "koa-router": "^4.2.0",
+    "koa-static-cache": "^3.0.2",
+    "koa-swig": "^1.3.0",
+    "mongoose": "^3.8.25",
+    "socket.io": "^1.3.5",
+    "winston": "^0.9.0"
+  }
+}
