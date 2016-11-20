@@ -1,6 +1,7 @@
 # Koa Boilerplate
 
 Yet another Koa boilerplate for Koa 2 with async/await syntax sugar.
+For people who love minimal configuration about Koa 2, please visit [Koa2-Starter](https://github.com/rightson/koa2-starter) for some more incremental setting steps.
 
 # Dependencies
 
