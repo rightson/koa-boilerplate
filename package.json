@@ -1,29 +1,45 @@
 {
   "name": "koa-boilerplate",
-  "version": "1.0.0",
-  "description": "Koa Boilerplate",
-  "main": "app.js",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "make test"
+    "start": "node_modules/.bin/nodemon"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rightson/koa-boilerplate.git"
-  },
+  "keywords": [
+    "Koa2",
+    "async/await",
+    "es2015"
+  ],
   "author": "Scott Chen",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/rightson/koa-boilerplate/issues"
-  },
-  "homepage": "https://github.com/rightson/koa-boilerplate",
   "dependencies": {
-    "koa": "^0.18.1",
-    "koa-body": "^1.1.0",
-    "koa-router": "^4.2.0",
-    "koa-static-cache": "^3.0.2",
-    "koa-swig": "^1.3.0",
-    "mongoose": "^3.8.25",
-    "socket.io": "^1.3.5",
-    "winston": "^0.9.0"
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-register": "^6.14.0",
+    "ejs": "^2.5.2",
+    "koa": "^2.0.0",
+    "koa-body": "2.0.0",
+    "koa-compress": "2.0.0",
+    "koa-json": "^1.1.3",
+    "koa-logger": "2.0.0",
+    "koa-router": "7.0",
+    "koa-static": "2.0.0",
+    "koa-views": "^5.2.0",
+    "mongoose": "^4.6.5",
+    "nodemon": "^1.11.0",
+    "require-dir": "^0.3.1",
+    "swig": "^1.4.2",
+    "winston": "^2.3.0",
+    "winston-koa-logger": "^0.0.2"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-async-to-generator"
+    ]
   }
 }

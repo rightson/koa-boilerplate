@@ -1,28 +1,16 @@
-export PATH := $(PWD)/node_modules/.bin:$(PATH)
+PORT = 3000
+LOG = koa-boilerplate.log
+LOG_PRODUCTION = production.log
+FOREVER_ARGS = --minUptime 10 --spinSleepTime 1000
 
-PORT := 3000
-DEV_ENV := NODE_ENV=development PORT=$(PORT) STATIC_ROOT='/' LOGGER=debug
+dev:
+	NODE_ENV=development PORT=$(PORT) LOG=$(LOG) nodemon index.js
 
-BOWER := bower_components
-NODE_MODULES := node_modules
+staging:
+	NODE_ENV=production PORT=$(PORT) LOG=$(LOG) nodemon index.js
 
-WATCHING := 'js|html|css'
-IGNORED := $(NODE_MODULES),$(BOWER),.vagrant,.git
-NODE_FLAGS := --harmony
-MAIN := app.js
+production:
+	NODE_ENV=production PORT=4000 LOG=$(LOG_PRODUCTION) forever $(FOREVER_ARGS) start $(PWD)/index.js
+	@forever list
 
-dev: setup_env
-	$(DEV_ENV) \
-    supervisor -q $(NODE_FLAGS) -e $(WATCHING) -i $(IGNORED) $(MAIN)
-
-setup_env:
-	@if [ ! -d $(NODE_MODULES) ]; then $(call execho,npm install); fi;
-
-mongod:
-	mongod --fork --dbpath ~/.mongodb --logpath ~/.mongodb/db.log --logappend
-
-define execho
-@echo "$1"; $1
-endef
-
-.PHONY: dev setup_env
+.PHONY: dev staging production
