@@ -1,7 +1,7 @@
 var assert = require('chai').assert;
 var request = require('superagent');
 
-var api_root = process.env.API_ROOT || 'http://localhost:3000'
+var api_root = process.env.API_ROOT || 'http://localhost:3001'
 
 exports.listResources = function(entry, querystring) {
     describe('GET ' + entry, function() {
