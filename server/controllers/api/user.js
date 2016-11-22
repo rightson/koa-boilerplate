@@ -9,8 +9,8 @@ const User = mongoose.model('User');
 
 export async function list(ctx) {
     let qs = libqs.getQueryString(ctx);
-    let limit = 100
-    ctx.body = await User.find(qs).sort({ Date: -1 }).limit(limit)
+    let { skip, limit } = libqs.getPagination(qs)
+    ctx.body = await User.find(qs).sort({ Date: -1 }).skip(skip).limit(limit)
 }
 
 export async function create(ctx) {
