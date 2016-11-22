@@ -11,6 +11,10 @@ For people who love minimal configuration about Koa 2, please visit [Koa2-Starte
 
 # Install Dependencies
 
+    make install
+
+or
+
     yarn global add nodemon forever
     yarn
 

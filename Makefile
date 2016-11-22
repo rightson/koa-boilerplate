@@ -13,4 +13,8 @@ production:
 	NODE_ENV=production PORT=4000 LOG=$(LOG_PRODUCTION) forever $(ARGS_FOREVER) start $(PWD)/index.js
 	@forever list
 
-.PHONY: dev staging production
+install:
+	yarn global add nodemon forever
+	yarn
+
+.PHONY: dev staging production install
