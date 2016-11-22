@@ -17,4 +17,8 @@ install:
 	yarn global add nodemon forever
 	yarn
 
-.PHONY: dev staging production install
+test:
+	./node_modules/.bin/mocha $(ARGS)
+
+.PHONY: dev staging production install test
+

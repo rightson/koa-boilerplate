@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules/.bin/nodemon"
+    "start": "node_modules/.bin/nodemon",
+    "test": "node_modules/.bin/mocha"
   },
   "keywords": [
     "Koa2",
@@ -34,7 +35,10 @@
     "winston-koa-logger": "^0.0.2"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "nodemon": "^1.11.0",
+    "superagent": "^3.0.0"
   },
   "babel": {
     "presets": [
