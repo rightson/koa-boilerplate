@@ -12,7 +12,7 @@ staging:
 	NODE_ENV=production PORT=$(PORT_STAGING) nodemon index.js
 
 production:
-	NODE_ENV=production PORT=$(PORT_PRODUCTION) LOG=$(LOG) pm2 --name $(APP_NAME) start index.js
+	NODE_ENV=production PORT=$(PORT_PRODUCTION) LOG=$(LOG) pm2 --name $(APP_NAME) -i 0 start index.js
 
 install:
 	yarn global add nodemon pm2
