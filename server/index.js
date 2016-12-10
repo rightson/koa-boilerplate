@@ -9,7 +9,7 @@ import body from 'koa-body'
 import json from 'koa-json'
 import views from 'koa-views'
 
-import * as config from './config'
+import config from './config'
 import db from './db'
 import controllers from './controllers'
 import catchException from './lib/exception'

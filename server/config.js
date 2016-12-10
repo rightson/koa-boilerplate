@@ -13,8 +13,8 @@ export const rootDir = path.resolve(path.join(__dirname), '..')
 export const pkg = require(path.join(rootDir, 'package.json'))
 
 export const location = {
-	public: path.join(rootDir, 'public'),
-	upload: path.join(rootDir, 'upload')
+    public: path.join(rootDir, 'public'),
+    upload: path.join(rootDir, 'upload')
 }
 
 export const db = {
@@ -27,13 +27,18 @@ export const db = {
     }
 }
 
-export const logger = new winston.Logger({
+let loggerConfig = {
     level: 'debug',
     transports: [
         new (winston.transports.Console)({
             timestamp: true,
             colorize: true
-        }),
+        })
+    ]
+}
+
+if (mode === 'production' || process.env.LOG) {
+    loggerConfig.transports.push(
         new (winston.transports.File)({
             filename: process.env.LOG || pkg.name + '.log',
             handleExceptions: true,
@@ -41,11 +46,13 @@ export const logger = new winston.Logger({
             colorize: false,
             json: false
         })
-    ]
-})
+    )
+}
+
+export const logger = new winston.Logger(loggerConfig)
 
 export const compress = {
-	flush: zlib.Z_SYNC_FLUSH
+    flush: zlib.Z_SYNC_FLUSH
 }
 
 export const body = {
@@ -64,7 +71,7 @@ export const views = {
     rootDir: path.join(rootDir, 'server', 'views'),
     engine: {
         map: {
-            html: 'swig' // or ejs
+            html: 'ejs'
         }
     }
 }
@@ -72,4 +79,19 @@ export const views = {
 export function banner(error) {
     if (error) throw error
     logger.info('Listening to port ' + port)
+}
+
+export default {
+    mode,
+    port,
+    rootDir,
+    pkg,
+    location,
+    db,
+    logger,
+    compress,
+    body,
+    jsonPretty,
+    views,
+    banner
 }
