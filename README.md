@@ -1,7 +1,6 @@
 # Koa Boilerplate
 
 Yet another Koa boilerplate for Koa 2 with async/await syntax sugar.
-For people who love minimal configuration about Koa 2, please visit [Koa2-Starter](https://github.com/rightson/koa2-starter) for some more incremental setting steps.
 
 # Dependencies
 
@@ -15,12 +14,12 @@ For people who love minimal configuration about Koa 2, please visit [Koa2-Starte
 
 or
 
-    yarn global add nodemon forever
+    yarn global add nodemon pm2
     yarn
 
 or
 
-    npm install -g nodemon forever
+    npm install -g nodemon pm2
     npm install
 
 
@@ -43,10 +42,10 @@ or
 
 # Watch Production Processes
 
-    forever list
+    pm2 list
 
 # Environment Variables for Development
 
-    PORT        - server port; default: 3000
-    NODE_ENV    - environment mode; 'production' for production, otherwise for others
-    LOG         - log file name, default value: koa-boilerplate.log
+    PORT        - server port, default is 3000
+    NODE_ENV    - environment mode, 'production' for production, otherwise for others
+    LOG         - log file name, default is koa-boilerplate.log
