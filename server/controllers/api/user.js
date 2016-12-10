@@ -2,15 +2,18 @@
 
 import mongoose from 'mongoose'
 
-import getValidId from '../../lib/validation'
-import * as libqs from '../../lib/querystring'
+import { getValidId } from '../../lib/validation'
+import libqs from '../../lib/querystring'
 
 const User = mongoose.model('User');
+
+export default { list, create, read, update, remove }
 
 export async function list(ctx) {
     let qs = libqs.getQueryString(ctx);
     let { skip, limit } = libqs.getPagination(qs)
-    ctx.body = await User.find(qs).sort({ Date: -1 }).skip(skip).limit(limit)
+    let sort = libqs.getSortingOption(qs);
+    ctx.body = await User.find(qs).sort(sort).skip(skip).limit(limit)
 }
 
 export async function create(ctx) {
