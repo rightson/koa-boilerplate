@@ -4,7 +4,7 @@ import path from 'path'
 import zlib from 'zlib'
 import winston from 'winston'
 
-export const mode = process.env.NODE_ENV
+export const mode = process.env.NODE_ENV || 'development'
 
 export const port = process.env.PORT || 3000
 
@@ -37,6 +37,10 @@ let loggerConfig = {
     ]
 }
 
+if (mode === 'test') {
+    loggerConfig.level = 'error'
+}
+
 if (mode === 'production' || process.env.LOG) {
     loggerConfig.transports.push(
         new (winston.transports.File)({
@@ -50,6 +54,8 @@ if (mode === 'production' || process.env.LOG) {
 }
 
 export const logger = new winston.Logger(loggerConfig)
+
+console.log(`${pkg.name} is running in ${mode} mode`)
 
 export const compress = {
     flush: zlib.Z_SYNC_FLUSH

@@ -1,3 +1,4 @@
+process.env.NODE_ENV = 'test'
 process.env.PORT = 3001
 process.env.API_ROOT = 'http://localhost:3001'
 
