@@ -1,20 +1,21 @@
 PORT = 3000
+PORT_STAGING = 8000
+PORT_PRODUCTION = 9000
 LOG = koa-boilerplate.log
-LOG_PRODUCTION = production.log
+APP_NAME = koa-boilerplate
 ARGS_FOREVER = --minUptime 10 --spinSleepTime 1000
 
 dev:
-	NODE_ENV=development PORT=$(PORT) LOG=$(LOG) nodemon index.js
+	NODE_ENV=development PORT=$(PORT) nodemon index.js
 
 staging:
-	NODE_ENV=production PORT=$(PORT) LOG=$(LOG) nodemon index.js
+	NODE_ENV=production PORT=$(PORT_STAGING) nodemon index.js
 
 production:
-	NODE_ENV=production PORT=4000 LOG=$(LOG_PRODUCTION) forever $(ARGS_FOREVER) start $(PWD)/index.js
-	@forever list
+	NODE_ENV=production PORT=$(PORT_PRODUCTION) LOG=$(LOG) pm2 --name $(APP_NAME) start index.js
 
 install:
-	yarn global add nodemon forever
+	yarn global add nodemon pm2
 	yarn
 
 test:
