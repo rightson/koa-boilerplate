@@ -2,6 +2,12 @@
 
 import fs from 'fs'
 
+export default {
+    not_found,
+    internal_server_error,
+    index
+}
+
 export async function not_found(ctx) {
     ctx.status = 404;
     await ctx.render('404')

@@ -1,7 +1,7 @@
 'use strict';
 
-import * as html from './html'
-import * as user_api from './api/user'
+import html from './html'
+import user_api from './api/user'
 
 const router = require('koa-router')()
 
