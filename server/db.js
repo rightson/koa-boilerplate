@@ -6,8 +6,6 @@ import mongoose from 'mongoose'
 import logger from './lib/logger'
 import * as config from './config'
 
-import './models'
-
 mongoose.connection.on('error', function(error) {
     logger.error('Failed to connect to ' + config.db.uri)
     logger.error(error)

@@ -10,6 +10,7 @@ import json from 'koa-json'
 import views from 'koa-views'
 
 import config from './config'
+import auth from './auth'
 import db from './db'
 import controllers from './controllers'
 import catchException from './lib/exception'
@@ -21,6 +22,8 @@ app.use(convert(koaLogger(config.logger)))
 app.use(compress(config.compress))
 
 app.use(body(config.body))
+
+app.use(convert(auth.initialize()))
 
 app.use(convert(staticFiles(config.location.public)))
 

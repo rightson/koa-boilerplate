@@ -3,6 +3,7 @@
 import path from 'path'
 import zlib from 'zlib'
 import winston from 'winston'
+import mongoose from 'mongoose'
 
 export const mode = process.env.NODE_ENV || 'development'
 
@@ -26,6 +27,8 @@ export const db = {
         server: { poolSize: 10 },
     }
 }
+
+mongoose.set('debug', mode === 'development')
 
 let loggerConfig = {
     level: 'debug',

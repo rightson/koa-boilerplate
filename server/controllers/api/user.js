@@ -1,11 +1,13 @@
 'use strict';
 
+import crypto from 'crypto'
 import mongoose from 'mongoose'
 
 import { getValidId } from '../../lib/validation'
 import libqs from '../../lib/querystring'
 
-const User = mongoose.model('User');
+const User = mongoose.model('User')
+const md5enc = crypto.createHash('md5').update
 
 export default { list, create, read, update, remove }
 
@@ -19,6 +21,8 @@ export async function list(ctx) {
 export async function create(ctx) {
     let body = ctx.request.body;
     try {
+        if (!body.name || !body.password || !body.email) ctx.throw(400)
+        body.password = md5enc(body.password).digest('hex')
         ctx.body = await User.create(body)
         ctx.status = 201
     } catch(error) {
