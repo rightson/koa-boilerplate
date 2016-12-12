@@ -11,7 +11,7 @@ import views from 'koa-views'
 
 import config from './config'
 import db from './db'
-import controllers from './controllers'
+import router from './router'
 import catchException from './lib/exception'
 
 const app = new Koa()
@@ -30,9 +30,9 @@ app.use(views(config.views.rootDir), config.views.engine)
 
 app.use(catchException)
 
-app.use(controllers.routes())
+app.use(router.routes())
 
-app.use(controllers.allowedMethods())
+app.use(router.allowedMethods())
 
 app.listen(config.port, config.banner)
 
